@@ -7,20 +7,25 @@ function enterCategory(genre) {
     document.body.style.transition = 'opacity 0.5s ease';
 
     setTimeout(() => {
-        // 실제로는 여기서 각 장르 페이지로 이동(href)하거나 내용을 바꿉니다.
-        // 현재는 블로그 홈과 카테고리 진입 확인용 알림을 띄웁니다.
-        const confirmEnter = confirm(`'${genreName}' 카테고리로 이동합니다.\n(친구들이 여기에 내용을 채우면 됩니다!)`);
-        
-        // 다시 화면 보여주기
-        document.body.style.opacity = '1';
-        
-        if(confirmEnter) {
-            console.log(`Navigating to ${genreName} page...`);
-            // 나중에 실제 페이지가 생기면 아래 주석을 해제하세요.
-            // window.location.href = `${genre}.html`;
+        // 1. 발라드 장르는 실제 HTML 파일로 이동
+        if (genre === 'ballad') {
+            window.location.href = 'ballad.html';
+        } 
+        // 2. 다른 장르는 기존의 알림 동작 유지 (개발 중임을 알림)
+        else {
+            const confirmEnter = confirm(`'${genreName}' 카테고리로 이동합니다.\n(친구들이 여기에 내용을 채우면 됩니다!)`);
+            document.body.style.opacity = '1';
+            
+            if(confirmEnter) {
+                console.log(`Navigating to ${genreName} page...`);
+                // window.location.href = `${genre}.html`; // 실제 페이지가 완성되면 이 주석을 해제
+            }
         }
+        
     }, 500);
 }
+
+// ... 나머지 함수 (voteMusic, addRequest, startQuiz, window.addEventListener('scroll', ...))는 그대로 유지
 
 // 투표 기능
 function voteMusic() {

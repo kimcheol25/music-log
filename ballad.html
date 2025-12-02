@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Lounge - 발라드 (Ballad)</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Pretendard:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css"> 
+    
+    <style>
+        /* === 발라드 페이지 전용 고퀄리티 스타일 === */
+
+        /* 페이지 로드 시 페이드 인 효과 */
+        body {
+            animation: fadeIn 1s ease-in-out;
+            background-color: #0f0f1a; /* 더 깊은 다크 톤 배경 */
+        }
+
+        /* 감성적인 명조체 폰트 적용 클래스 */
+        .serif-font {
+            font-family: 'Noto Serif KR', serif;
+        }
+
+        /* 헤더 (히어로 섹션) 디자인 강화 */
+        .hero-ballad {
+            /* 고해상도 배경 이미지 & 감성적인 다크 오버레이 */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(25, 15, 40, 0.9)), 
+                        url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            height: 60vh; /* 높이 확대 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-content-ballad h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            color: #e0c3fc; /* 부드러운 라벤더 컬러 */
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .hero-content-ballad p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+
+        /* 콘텐츠 섹션 레이아웃 */
+        .ballad-section {
+            padding: 80px 5%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .section-header p {
+            color: #a18cd1;
+            font-size: 1.1rem;
+        }
+
+        /* 카드 그리드 및 디자인 (Glassmorphism 효과) */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .info-card {
+            /* 반투명 유리 질감 배경 */
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 35px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .info-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            border-color: #a18cd1;
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            color: #a18cd1;
+            margin-bottom: 20px;
+            background: rgba(161, 140, 209, 0.2);
+            padding: 15px;
+            border-radius: 50%;
+        }
+        .info-card h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .info-card p, .info-card li {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .info-card ul {
+            padding-left: 20px;
+        }
+        .info-card li {
+            margin-bottom: 10px;
+            list-style-type: square;
+        }
+
+        /* 대표 아티스트 섹션 */
+        .artist-section {
+            margin-top: 100px;
+            background: rgba(20, 20, 35, 0.8);
+            border-radius: 30px;
+            padding: 50px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .artist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .artist-card {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .artist-card:hover {
+            transform: scale(1.05);
+        }
+        .artist-img-box {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid transparent;
+            background-image: linear-gradient(#1f1f2f, #1f1f2f), linear-gradient(45deg, #a18cd1, #fbc2eb);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .artist-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .artist-card:hover .artist-img-box img {
+            transform: scale(1.1);
+        }
+        .artist-card strong {
+            display: block;
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .artist-card span {
+            color: #a18cd1;
+            font-size: 0.95rem;
+        }
+
+        /* 애니메이션 정의 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Music Lounge</div>
+        <ul class="nav-links">
+            <li><a href="index.html">홈</a></li> 
+            <li><a href="index.html#genres">장르 탐험</a></li>
+            <li><a href="index.html#activity">커뮤니티</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-ballad">
+        <div class="hero-content-ballad">
+            <h1 class="serif-font">깊은 밤, 마음을 켜다.</h1>
+            <p class="serif-font">
+                가슴 속 깊이 잠든 감정을 섬세하게 어루만지는 선율.<br>
+                이별의 아픔도, 따뜻한 위로도 모두 음악이 되는 순간을 만나보세요.
+            </p>
+            <a href="index.html#genres" class="btn-start" style="background: linear-gradient(45deg, #a18cd1, #fbc2eb); border: none; box-shadow: 0 5px 15px rgba(161, 140, 209, 0.4);">다른 장르 보기</a>
+        </div>
+    </header>
+
+    <section class="ballad-section">
+        <div class="section-header">
+            <h2 class="serif-font">발라드, 감정의 서사시</h2>
+            <p>Ballad: The poetry of emotion</p>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="card-icon"><i class="fas fa-feather-pointed"></i></div>
+                <h3 class="serif-font">장르 소개</h3>
+                <p>
+                    서정적인 멜로디와 가사에 중점을 둔 대중음악의 정수입니다. 
+                    청중의 공감을 이끌어내는 이야기 중심의 구조를 가지며, 
+                    한국에서는 특히 호소력 짙은 보컬 능력이 강조되는 장르입니다.
+                </p>
+            </div>
+            
+            <div class="info-card">
+                <div class="card-icon"><i class="fas fa-cloud-moon-rain"></i></div>
+                <h3 class="serif-font">분위기 & 감성</h3>
+                <ul>
+                    <li><strong>애절함:</strong> 심금을 울리는 슬픈 사랑과 이별의 정서</li>
+                    <li><strong>따뜻함:</strong> 지친 마음을 감싸주는 위로와 힐링</li>
+                    <li><strong>웅장함:</strong> 오케스트라 사운드와 함께 고조되는 극적인 감동</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <div class="card-icon"><i class="fas fa-mug-hot"></i></div>
+                <h3 class="serif-font">이럴 때 들으세요</h3>
+                <ul>
+                    <li>비 오는 날 창밖을 바라보며 센치해질 때</li>
+                    <li>고요한 새벽, 혼자만의 생각에 깊이 잠길 때</li>
+                    <li>사랑하는 사람에게 마음을 전하고 싶을 때</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="artist-section">
+            <div class="section-header" style="margin-bottom: 40px;">
+                <h2 class="serif-font" style="font-size: 2.5rem;">The Voices of Ballad</h2>
+                <p>우리의 감정을 대변하는 국가대표 보컬리스트</p>
+            </div>
+            
+            <div class="artist-grid">
+                <div class="artist-card">
+                    <div class="artist-img-box">
+                        <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1974&auto=format&fit=crop" alt="아이유 상징 이미지">
+                    </div>
+                    <strong class="serif-font">아이유 (IU)</strong>
+                    <span>"밤편지", "무릎"</span>
+                </div>
+                
+                <div class="artist-card">
+                    <div class="artist-img-box">
+                        <img src="https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?q=80&w=1974&auto=format&fit=crop" alt="성시경 상징 이미지">
+                    </div>
+                    <strong class="serif-font">성시경</strong>
+                    <span>"거리에서", "두 사람"</span>
+                </div>
+                
+                <div class="artist-card">
+                    <div class="artist-img-box">
+                        <img src="https://images.unsplash.com/photo-1452830978618-d6feae7d0ffa?q=80&w=2070&auto=format&fit=crop" alt="박효신 상징 이미지">
+                    </div>
+                    <strong class="serif-font">박효신</strong>
+                    <span>"눈의 꽃", "야생화"</span>
+                </div>
+                
+                <div class="artist-card">
+                    <div class="artist-img-box">
+                        <img src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?q=80&w=2078&auto=format&fit=crop" alt="나얼 상징 이미지">
+                    </div>
+                    <strong class="serif-font">나얼</strong>
+                    <span>"바람기억", "귀로"</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Music Lounge Project. Ballad Page.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
