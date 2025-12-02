@@ -1,18 +1,18 @@
-/* 기본 설정 */
+/* 부드러운 스크롤 (필수 기능) */
 html {
-    scroll-behavior: smooth; /* 부드러운 스크롤 (필수 기능) */
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'Noto Sans KR', sans-serif;
-    background-color: #050505; /* 아주 어두운 검정 */
+    background-color: #050505;
     color: #ffffff;
     overflow-x: hidden;
 }
 
-/* 네비게이션 바 */
+/* 네비게이션 */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -22,7 +22,6 @@ body {
     backdrop-filter: blur(10px);
     position: fixed;
     width: 100%;
-    box-sizing: border-box;
     z-index: 1000;
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
@@ -30,7 +29,7 @@ body {
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #00ff88; /* 네온 그린 포인트 */
+    color: #00ff88;
 }
 
 .nav-links {
@@ -50,21 +49,22 @@ body {
     color: #00ff88;
 }
 
-/* 히어로 섹션 (배경 이미지) */
+/* 히어로 섹션 */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+    /* 배경 이미지 */
+    background: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
     text-align: center;
 }
 
 .hero .overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* 배경 어둡게 처리 */
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .hero-content {
@@ -73,17 +73,8 @@ body {
     animation: fadeInUp 1s ease-out;
 }
 
-.hero h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    color: #ddd;
-}
+.hero h1 { font-size: 4rem; margin-bottom: 20px; line-height: 1.2; }
+.hero p { font-size: 1.2rem; margin-bottom: 40px; color: #ddd; }
 
 .btn-start {
     padding: 15px 40px;
@@ -92,7 +83,6 @@ body {
     text-decoration: none;
     font-weight: bold;
     border-radius: 50px;
-    font-size: 1.1rem;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -101,56 +91,30 @@ body {
     box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
 }
 
-/* 둥둥 떠있는 음악 카드 (디자인 요소) */
+/* 플로팅 카드 */
 .music-card-floating {
     position: absolute;
-    bottom: 50px;
-    right: 50px;
+    bottom: 50px; right: 50px;
     background: rgba(255,255,255,0.1);
     backdrop-filter: blur(5px);
     padding: 15px;
     border-radius: 15px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    display: flex; align-items: center; gap: 15px;
     border: 1px solid rgba(255,255,255,0.2);
-    animation: float 3s ease-in-out infinite;
+    animation: float 3s infinite ease-in-out;
     z-index: 1;
 }
 
-.album-art img {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-}
+.music-card-floating img { width: 50px; height: 50px; border-radius: 8px; }
 
-.info {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-}
-
-.info span { font-size: 0.8rem; color: #aaa; }
-.info strong { font-size: 1rem; }
-
-/* 장르 섹션 */
+/* 장르 섹션 (그리드) */
 .genre-section {
     padding: 100px 50px;
     background-color: #0a0a0a;
 }
 
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: white;
-}
-
-.section-desc {
-    text-align: center;
-    color: #888;
-    margin-bottom: 60px;
-}
+.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 10px; }
+.section-desc { text-align: center; color: #888; margin-bottom: 60px; }
 
 .grid-container {
     display: grid;
@@ -169,6 +133,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
+/* 이미지 비율 유지하며 꽉 채우기 (사진 안 깨지는 핵심 코드) */
 .card-img {
     width: 100%;
     height: 100%;
@@ -177,145 +142,49 @@ body {
 }
 
 .card-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    position: absolute; bottom: 0; left: 0; width: 100%;
     padding: 30px 20px;
     background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
     box-sizing: border-box;
     transition: padding-bottom 0.3s;
 }
 
-.card:hover .card-img {
-    transform: scale(1.1); /* 사진 확대 효과 */
-}
+.card:hover .card-img { transform: scale(1.1); }
+.card:hover .card-content { padding-bottom: 40px; }
+.card h3 { margin: 0; font-size: 1.8rem; }
+.card p { margin: 5px 0 0; color: #ccc; font-size: 0.9rem; }
 
-.card:hover .card-content {
-    padding-bottom: 40px; /* 텍스트 살짝 위로 */
-}
-
-.card h3 {
-    margin: 0;
-    font-size: 1.8rem;
-    color: #fff;
-}
-
-.card p {
-    margin: 5px 0 0;
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-/* 활동 섹션 */
-.activity-section {
-    padding: 100px 50px;
-    background: #111;
-    text-align: center;
-}
-
-.activity-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-top: 50px;
-}
-
+/* 활동 섹션 & 게시판 */
+.activity-section { padding: 100px 50px; background: #111; text-align: center; }
+.activity-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 50px; }
 .act-box {
-    background: #1e1e1e;
-    padding: 40px 20px;
-    border-radius: 20px;
-    width: 250px;
-    border: 1px solid #333;
-    transition: border-color 0.3s;
+    background: #1e1e1e; padding: 40px 20px; border-radius: 20px;
+    width: 250px; border: 1px solid #333; transition: border-color 0.3s;
 }
-
-.act-box:hover {
-    border-color: #00ff88;
-}
-
-.act-box .icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-
+.act-box:hover { border-color: #00ff88; }
+.act-box .icon { font-size: 3rem; margin-bottom: 20px; }
 .act-btn {
-    margin-top: 20px;
-    padding: 10px 25px;
-    border: 1px solid #fff;
-    background: transparent;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s;
+    margin-top: 20px; padding: 10px 25px; border: 1px solid #fff;
+    background: transparent; color: white; border-radius: 20px;
+    cursor: pointer; transition: all 0.3s;
 }
+.act-btn:hover { background: white; color: black; }
 
-.act-btn:hover {
-    background: white;
-    color: black;
-}
-
-.footer {
-    padding: 30px;
-    text-align: center;
-    background: black;
-    color: #555;
-    font-size: 0.8rem;
-}
-
-/* 애니메이션 키프레임 */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-/* --- 신청곡 게시판 추가 스타일 --- */
-.request-box {
-    width: 300px; /* 게시판은 조금 더 넓게 */
-}
-
+/* 신청곡 리스트 스타일 */
+.request-box { width: 300px; }
 .request-list-container {
-    margin-top: 15px;
-    height: 150px; /* 높이 고정 */
-    overflow-y: auto; /* 내용이 많으면 스크롤 */
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    padding: 10px;
-    text-align: left;
+    margin-top: 15px; height: 150px; overflow-y: auto;
+    background: rgba(0,0,0,0.3); border-radius: 10px; padding: 10px; text-align: left;
 }
-
-#request-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
+#request-list { list-style: none; padding: 0; margin: 0; }
 #request-list li {
-    font-size: 0.9rem;
-    padding: 5px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ddd;
-    display: flex;
-    justify-content: space-between;
+    font-size: 0.9rem; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: #ddd; display: flex; justify-content: space-between;
 }
+.request-list-container::-webkit-scrollbar { width: 6px; }
+.request-list-container::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
 
-#request-list li span.artist {
-    color: #00ff88; /* 가수 이름은 초록색 */
-    font-weight: bold;
-    margin-right: 5px;
-}
+.footer { padding: 30px; text-align: center; background: black; color: #555; font-size: 0.8rem; }
 
-/* 스크롤바 디자인 (크롬/사파리) */
-.request-list-container::-webkit-scrollbar {
-    width: 6px;
-}
-.request-list-container::-webkit-scrollbar-thumb {
-    background: #555;
-    border-radius: 3px;
-}
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
