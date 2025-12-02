@@ -107,29 +107,37 @@
         </div>
     </section>
 
-    <section id="activity" class="activity-section">
-        <h2 class="section-title">함께 즐기는 음악</h2>
-        <div class="activity-container">
-            <div class="act-box">
-                <div class="icon">🏆</div>
-                <h3>이달의 노래 투표</h3>
-                <p>가장 좋았던 곡에 투표해주세요.</p>
-                <button class="act-btn">투표하기</button>
-            </div>
-            <div class="act-box">
-                <div class="icon">🎧</div>
-                <h3>신청곡 게시판</h3>
-                <p>듣고 싶은 노래를 신청하세요.</p>
-                <button class="act-btn">신청하기</button>
-            </div>
-            <div class="act-box">
-                <div class="icon">🧩</div>
-                <h3>음악 퀴즈</h3>
-                <p>전주만 듣고 노래 맞추기!</p>
-                <button class="act-btn">도전하기</button>
+<section id="activity" class="activity-section">
+    <h2 class="section-title">함께 즐기는 음악</h2>
+    
+    <div class="activity-container">
+        <div class="act-box">
+            <div class="icon">🏆</div>
+            <h3>이달의 노래 투표</h3>
+            <p>가장 좋았던 곡에 투표해주세요.</p>
+            <button class="act-btn" onclick="voteMusic()">투표하기</button>
+        </div>
+
+        <div class="act-box request-box">
+            <div class="icon">🎧</div>
+            <h3>신청곡 게시판</h3>
+            <p>듣고 싶은 노래를 신청하세요.</p>
+            <button class="act-btn" onclick="addRequest()">신청하기</button>
+            
+            <div class="request-list-container">
+                <ul id="request-list">
+                    </ul>
             </div>
         </div>
-    </section>
+
+        <div class="act-box">
+            <div class="icon">🧩</div>
+            <h3>음악 퀴즈</h3>
+            <p>전주만 듣고 노래 맞추기!</p>
+            <button class="act-btn" onclick="startQuiz()">도전하기</button>
+        </div>
+    </div>
+</section>
 
     <footer class="footer">
         <p>&copy; 2025 Music Lounge Project. All rights reserved.</p>

@@ -275,3 +275,47 @@ body {
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
 }
+/* --- 신청곡 게시판 추가 스타일 --- */
+.request-box {
+    width: 300px; /* 게시판은 조금 더 넓게 */
+}
+
+.request-list-container {
+    margin-top: 15px;
+    height: 150px; /* 높이 고정 */
+    overflow-y: auto; /* 내용이 많으면 스크롤 */
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: left;
+}
+
+#request-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#request-list li {
+    font-size: 0.9rem;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+#request-list li span.artist {
+    color: #00ff88; /* 가수 이름은 초록색 */
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* 스크롤바 디자인 (크롬/사파리) */
+.request-list-container::-webkit-scrollbar {
+    width: 6px;
+}
+.request-list-container::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 3px;
+}
