@@ -3,152 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Music Archive</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Music Universe Blog</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav>
-        <div class="logo"><i class="fas fa-music"></i> MusicLog</div>
-        <ul class="nav-links">
-            <li><a class="nav-item active" onclick="showPage('home')">HOME</a></li>
-            <li><a class="nav-item" onclick="showPage('kpop')">K-POP</a></li>
-            <li><a class="nav-item" onclick="showPage('trot')">TROT</a></li>
-            <li><a class="nav-item" onclick="showPage('jazz')">JAZZ</a></li>
-        </ul>
-    </nav>
-
-    <section id="home" class="page-section active">
-        <header class="hero" style="background-image: url('https://picsum.photos/id/452/1600/900');">
-            <div class="hero-content">
-                <h1>Music is Life</h1>
-                <p>K-Pop, 트로트, 재즈까지. 당신의 취향을 찾아보세요.</p>
-            </div>
+    <main id="home-page" class="page active">
+        <header class="main-header">
+            <h1>🎵 MUSIC UNIVERSE</h1>
+            <p>다양한 장르의 음악을 탐험하고 기록하는 공간</p>
         </header>
 
-        <div class="container">
-            <h2 class="section-title">Genre Selection</h2>
-            <div class="card-grid">
-                <div class="card" onclick="showPage('kpop')" style="cursor: pointer;">
-                    <img src="https://picsum.photos/id/158/400/300" class="card-img">
-                    <div class="card-body">
-                        <span class="card-tag">Trending</span>
-                        <h3>K-POP</h3>
-                        <p>전 세계가 열광하는 퍼포먼스와 멜로디.</p>
-                    </div>
-                </div>
-                <div class="card" onclick="showPage('trot')" style="cursor: pointer;">
-                    <img src="https://picsum.photos/id/453/400/300" class="card-img">
-                    <div class="card-body">
-                        <span class="card-tag">Soul</span>
-                        <h3>TROT</h3>
-                        <p>한국인의 한과 흥을 담은 노래.</p>
-                    </div>
-                </div>
-                <div class="card" onclick="showPage('jazz')" style="cursor: pointer;">
-                    <img src="https://picsum.photos/id/449/400/300" class="card-img">
-                    <div class="card-body">
-                        <span class="card-tag">Classic</span>
-                        <h3>JAZZ</h3>
-                        <p>낭만적인 밤을 위한 즉흥 연주.</p>
-                    </div>
-                </div>
+        <section class="activities">
+            <div class="activity-card daily-pick">
+                <h3>📅 Today's Pick</h3>
+                <p>오늘의 추천곡을 확인해보세요!</p>
+                <button>추천 받기</button>
+            </div>
+            <div class="activity-card live-chat">
+                <h3>💬 Live Chat</h3>
+                <p>친구들의 실시간 음악 감상평</p>
+                <div class="chat-box">"재즈 들으면서 코딩 중..."</div>
+            </div>
+        </section>
+
+        <section class="genre-grid">
+            <div class="genre-card kpop" onclick="openCategory('kpop')"><h2>K-POP</h2></div>
+            <div class="genre-card rnb" onclick="openCategory('rnb')"><h2>R&B</h2></div>
+            <div class="genre-card hiphop" onclick="openCategory('hiphop')"><h2>HIP-HOP</h2></div>
+            <div class="genre-card ballad" onclick="openCategory('ballad')"><h2>BALLAD</h2></div>
+            <div class="genre-card trot" onclick="openCategory('trot')"><h2>TROT</h2></div>
+            <div class="genre-card classic" onclick="openCategory('classic')"><h2>CLASSIC</h2></div>
+            <div class="genre-card jazz" onclick="openCategory('jazz')"><h2>JAZZ</h2></div>
+            <div class="genre-card pop" onclick="openCategory('pop')"><h2>POP</h2></div>
+        </section>
+    </main>
+
+    <div id="category-overlay" class="overlay">
+        <button class="close-btn" onclick="goHome()">✕ Close</button>
+        
+        <div id="kpop" class="category-content">
+            <h1 class="cat-title">K-POP WORLD</h1>
+            <p class="cat-desc">화려한 퍼포먼스와 중독성 있는 멜로디</p>
+            <div class="post-list">
+                <div class="placeholder-post">친구들이 여기에 글을 작성할 수 있습니다.</div>
             </div>
         </div>
-    </section>
 
-    <section id="kpop" class="page-section">
-        <header class="hero" style="background-image: url('https://picsum.photos/id/338/1600/900');">
-            <div class="hero-content">
-                <h1>K-POP Playlist</h1>
-                <p>트렌디한 비트와 칼군무의 세계</p>
-            </div>
-        </header>
-        <div class="container">
-            <div class="card-grid">
-                <article class="card">
-                    <img src="https://picsum.photos/id/334/400/300" class="card-img">
-                    <div class="card-body">
-                        <h3>NewJeans - Ditto</h3>
-                        <p>겨울 감성을 자극하는 몽환적인 비트.</p>
-                        <div class="player-ui"><i class="fas fa-play"></i> Play</div>
-                    </div>
-                </article>
-                <article class="card">
-                    <img src="https://picsum.photos/id/340/400/300" class="card-img">
-                    <div class="card-body">
-                        <h3>BTS - Dynamite</h3>
-                        <p>희망을 전하는 디스코 팝.</p>
-                        <div class="player-ui"><i class="fas fa-play"></i> Play</div>
-                    </div>
-                </article>
-            </div>
+        <div id="rnb" class="category-content">
+            <h1 class="cat-title">R&B SOUL</h1>
+            <p class="cat-desc">그루브와 감성이 넘치는 리듬 앤 블루스</p>
+            <div class="post-list"><div class="placeholder-post">작성된 글이 없습니다.</div></div>
         </div>
-    </section>
 
-    <section id="trot" class="page-section">
-        <header class="hero" style="background-image: url('https://picsum.photos/id/231/1600/900');">
-            <div class="hero-content">
-                <h1>TROT Playlist</h1>
-                <p>심금을 울리는 한국의 소울</p>
-            </div>
-        </header>
-        <div class="container">
-            <div class="card-grid">
-                <article class="card">
-                    <img src="https://picsum.photos/id/65/400/300" class="card-img">
-                    <div class="card-body">
-                        <h3>임영웅 - 모래알갱이</h3>
-                        <p>마음에 스며드는 서정적인 발라드 트로트.</p>
-                        <div class="player-ui"><i class="fas fa-play"></i> Play</div>
-                    </div>
-                </article>
-                <article class="card">
-                    <img src="https://picsum.photos/id/91/400/300" class="card-img">
-                    <div class="card-body">
-                        <h3>영탁 - 찐이야</h3>
-                        <p>속이 뻥 뚫리는 시원한 가창력.</p>
-                        <div class="player-ui"><i class="fas fa-play"></i> Play</div>
-                    </div>
-                </article>
-            </div>
+        <div id="hiphop" class="category-content">
+            <h1 class="cat-title">HIP-HOP</h1>
+            <p class="cat-desc">비트와 라임, 그리고 스웨그</p>
+            <div class="post-list"><div class="placeholder-post">작성된 글이 없습니다.</div></div>
         </div>
-    </section>
 
-    <section id="jazz" class="page-section">
-        <header class="hero" style="background-image: url('https://picsum.photos/id/145/1600/900');">
-            <div class="hero-content">
-                <h1>JAZZ Playlist</h1>
-                <p>낭만과 자유가 공존하는 선율</p>
-            </div>
-        </header>
-        <div class="container">
-            <div class="card-grid">
-                <article class="card">
-                    <img src="https://picsum.photos/id/176/400/300" class="card-img">
-                    <div class="card-body">
-                        <h3>Bill Evans - Waltz for Debby</h3>
-                        <p>피아노 트리오의 정석.</p>
-                        <div class="player-ui"><i class="fas fa-play"></i> Play</div>
-                    </div>
-                </article>
-                <article class="card">
-                    <img src="https://picsum.photos/id/235/400/300" class="card-img">
-                    <div class="card-body">
-                        <h3>Chet Baker - My Funny Valentine</h3>
-                        <p>쓸쓸하면서도 로맨틱한 트럼펫 연주.</p>
-                        <div class="player-ui"><i class="fas fa-play"></i> Play</div>
-                    </div>
-                </article>
-            </div>
+        <div id="ballad" class="category-content">
+            <h1 class="cat-title">BALLAD</h1>
+            <p class="cat-desc">마음을 울리는 감성적인 멜로디</p>
+            <div class="post-list"><div class="placeholder-post">작성된 글이 없습니다.</div></div>
         </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2025 My Music Archive. All rights reserved.</p>
-    </footer>
+        <div id="trot" class="category-content">
+            <h1 class="cat-title">TROT</h1>
+            <p class="cat-desc">흥과 한이 어우러진 정통 가요</p>
+            <div class="post-list"><div class="placeholder-post">작성된 글이 없습니다.</div></div>
+        </div>
+
+        <div id="classic" class="category-content">
+            <h1 class="cat-title">CLASSIC</h1>
+            <p class="cat-desc">시간을 초월한 우아함과 깊이</p>
+            <div class="post-list"><div class="placeholder-post">작성된 글이 없습니다.</div></div>
+        </div>
+
+        <div id="jazz" class="category-content">
+            <h1 class="cat-title">JAZZ</h1>
+            <p class="cat-desc">자유로운 즉흥 연주와 스윙</p>
+            <div class="post-list"><div class="placeholder-post">작성된 글이 없습니다.</div></div>
+        </div>
+
+        <div id="pop" class="category-content">
+            <h1 class="cat-title">POP MUSIC</h1>
+            <p class="cat-desc">전 세계가 사랑하는 트렌디한 음악</p>
+            <div class="post-list"><div class="placeholder-post">작성된 글이 없습니다.</div></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

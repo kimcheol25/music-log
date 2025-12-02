@@ -1,39 +1,48 @@
-// 페이지 전환 함수
-function showPage(pageId) {
-    // 1. 모든 섹션 숨기기
-    const sections = document.querySelectorAll('.page-section');
-    sections.forEach(section => {
-        section.classList.remove('active');
-    });
-
-    // 2. 선택한 섹션만 보여주기
-    const targetSection = document.getElementById(pageId);
-    if (targetSection) {
-        targetSection.classList.add('active');
-    }
-
-    // 3. 네비게이션 버튼 색상 변경
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-        item.classList.remove('active');
-    });
+function openCategory(genre) {
+    // 1. 오버레이(새 화면)를 가져옴
+    const overlay = document.getElementById('category-overlay');
     
-    // 버튼 맵핑 (home:0, kpop:1, trot:2, jazz:3)
-    const buttonMap = { 'home': 0, 'kpop': 1, 'trot': 2, 'jazz': 3 };
-    if (buttonMap[pageId] !== undefined) {
-        navItems[buttonMap[pageId]].classList.add('active');
+    // 2. 모든 카테고리 내용을 일단 숨김
+    const contents = document.querySelectorAll('.category-content');
+    contents.forEach(content => content.classList.remove('show'));
+    
+    // 3. 선택한 장르만 보여줌
+    const selected = document.getElementById(genre);
+    if(selected) {
+        selected.classList.add('show');
+        
+        // 장르별 테마 색상 적용 (배경색을 은은하게 변경)
+        const colors = {
+            'kpop': '#2a0e26',
+            'rnb': '#1a1025',
+            'hiphop': '#111',
+            'ballad': '#f0f4f8', // 발라드는 밝은 배경
+            'trot': '#3a0000',
+            'classic': '#1a222e',
+            'jazz': '#0f1520',
+            'pop': '#201a30'
+        };
+        
+        // 발라드/Pop일 경우 글자색 검정으로 변경 (가독성)
+        if(genre === 'ballad' || genre === 'pop') {
+            overlay.style.color = '#333';
+            document.querySelector('.close-btn').style.borderColor = '#333';
+            document.querySelector('.close-btn').style.color = '#333';
+        } else {
+            overlay.style.color = 'white';
+            document.querySelector('.close-btn').style.borderColor = 'white';
+            document.querySelector('.close-btn').style.color = 'white';
+        }
+
+        overlay.style.backgroundColor = colors[genre];
     }
 
-    // 4. 스크롤 맨 위로
-    window.scrollTo(0, 0);
+    // 4. 화면을 아래에서 위로 부드럽게 올림
+    overlay.classList.add('active');
 }
 
-// 재생 버튼 클릭 이벤트 (가짜 기능)
-document.addEventListener('DOMContentLoaded', () => {
-    const playBtns = document.querySelectorAll('.player-ui');
-    playBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            alert('🎵 음악이 재생됩니다! (실제 구현 필요)');
-        });
-    });
-});
+function goHome() {
+    // 오버레이를 다시 아래로 내림
+    const overlay = document.getElementById('category-overlay');
+    overlay.classList.remove('active');
+}
