@@ -6,12 +6,12 @@
 }
 
 html {
-    scroll-behavior: smooth; /* 부드러운 스크롤 */
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Pretendard', sans-serif;
-    background-color: #121212; /* 다크 모드 배경 */
+    background-color: #121212;
     color: #ffffff;
     line-height: 1.6;
 }
@@ -71,19 +71,11 @@ body {
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 20px;
-    
-    /* 1. 그라데이션 배경 설정 */
     background: linear-gradient(to right, #fff, #00f2ff);
-    
-    /* 2. 배경을 글자 모양으로 자르기 (표준 + 웹킷 둘 다 작성) */
-    -webkit-background-clip: text; /* 구형 크롬, 사파리용 */
-    background-clip: text;         /* 표준 브라우저용 */
-    
-    /* 3. 글자 색상을 투명하게 해서 배경이 보이게 함 */
-    color: transparent;            /* 표준 */
-    -webkit-text-fill-color: transparent; /* 웹킷 강제 적용 */
-    
-    /* (옵션) 혹시라도 그라데이션이 안 먹을 때를 대비한 꽉 찬 레이아웃 */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
     display: inline-block; 
 }
 
@@ -103,7 +95,7 @@ body {
     transform: scale(1.05);
 }
 
-/* 플로팅 뮤직 카드 (이미지 대신 CSS 디자인) */
+/* 플로팅 뮤직 카드 */
 .music-card-floating {
     position: absolute;
     right: 10%;
@@ -140,7 +132,7 @@ body {
     flex-direction: column;
 }
 
-/* 장르 섹션 */
+/* 장르 섹션 및 검색/무드 */
 .genre-section {
     padding: 80px 5%;
     text-align: center;
@@ -153,7 +145,61 @@ body {
 
 .section-desc {
     color: #aaa;
+    margin-bottom: 30px;
+}
+
+/* 검색창 스타일 */
+.search-container {
+    margin-bottom: 20px;
+    position: relative;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 12px 40px 12px 20px;
+    border-radius: 25px;
+    border: 1px solid #444;
+    background: #2a2a2a;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+/* 기분별 추천 버튼 */
+.mood-container {
     margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.mood-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #444;
+    background: #1f1f1f;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.mood-btn:hover {
+    background: #00f2ff;
+    color: #000;
+    border-color: #00f2ff;
 }
 
 .grid-container {
@@ -162,7 +208,7 @@ body {
     gap: 30px;
 }
 
-/* 카드 공통 스타일 */
+/* 카드 스타일 */
 .card {
     background: #1f1f1f;
     border-radius: 20px;
@@ -192,7 +238,7 @@ body {
     font-size: 5rem;
 }
 
-/* 장르별 배경색 (절대 깨지지 않는 디자인) */
+/* 장르별 배경색 */
 .kpop .card-visual { background: linear-gradient(45deg, #FF61D2, #FE9090); }
 .rnb .card-visual { background: linear-gradient(45deg, #4facfe, #00f2fe); }
 .hiphop .card-visual { background: linear-gradient(45deg, #434343, #000000); }
@@ -271,4 +317,69 @@ body {
     background: #0a0a0a;
     color: #555;
     font-size: 0.8rem;
+}
+
+/* --- 플로팅 플레이어 스타일 --- */
+.floating-player {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+
+.cd-disk {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #333, #000);
+    border-radius: 50%;
+    position: relative;
+    border: 2px solid #555;
+    animation: spin 3s linear infinite;
+    animation-play-state: paused; 
+}
+
+.cd-inner {
+    width: 12px;
+    height: 12px;
+    background: #00f2ff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #fff;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.music-info-text {
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: bold;
+    min-width: 80px;
+}
+
+.play-toggle-btn {
+    background: none;
+    border: none;
+    color: #00f2ff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.play-toggle-btn:hover {
+    transform: scale(1.2);
+    color: #fff;
 }
