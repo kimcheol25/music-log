@@ -9,16 +9,21 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">Music Lounge</div>
+        <div class="logo" onclick="location.href='index.html'">Music Lounge</div>
         <ul class="nav-links">
             <li><a href="index.html">홈</a></li>
             <li><a href="ballad.html">발라드 메인</a></li>
         </ul>
     </nav>
 
-    <section class="genre-section">
-        <h2 class="section-title">🎸 락 발라드 (Rock Ballad)</h2>
+    <header class="genre-header-bg" style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1470&q=80');">
+        <div class="genre-header-content fade-in">
+            <h1>락 발라드<br>(Rock Ballad)</h1>
+            <p>강렬한 밴드 사운드와 거친 감성의 조화</p>
+        </div>
+    </header>
 
+    <section class="genre-section fade-in" style="animation-delay: 0.3s;">
         <div class="detail-box">
             <h3>1. 장르 설명 & 특징</h3>
             <p>
@@ -47,12 +52,36 @@
         </div>
 
         <div class="detail-box">
-            <h3>4. 대표 명곡 (들어보기)</h3>
-            <ul class="song-list">
-                <li>버즈 - "가시"</li>
-                <li>YB - "사랑했나봐"</li>
-                <li>SG워너비 - "Timeless"</li>
-                <li>M.C The Max - "어디에도"</li>
+            <h3>4. 대표 명곡 (앨범 커버)</h3>
+            <ul class="album-list">
+                <li class="album-item" onclick="window.open('https://www.youtube.com/results?search_query=버즈+가시')">
+                    <img src="https://image.bugsm.co.kr/album/images/500/478/47836.jpg" alt="가시 앨범 커버" class="album-cover">
+                    <div class="song-info-text">
+                        <strong>가시</strong>
+                        <span>버즈 (Buzz)</span>
+                    </div>
+                </li>
+                <li class="album-item" onclick="window.open('https://www.youtube.com/results?search_query=YB+사랑했나봐')">
+                    <img src="https://image.bugsm.co.kr/album/images/500/484/48471.jpg" alt="사랑했나봐 앨범 커버" class="album-cover">
+                    <div class="song-info-text">
+                        <strong>사랑했나봐</strong>
+                        <span>YB</span>
+                    </div>
+                </li>
+                <li class="album-item" onclick="window.open('https://www.youtube.com/results?search_query=SG워너비+Timeless')">
+                    <img src="https://image.bugsm.co.kr/album/images/500/357/35724.jpg" alt="Timeless 앨범 커버" class="album-cover">
+                    <div class="song-info-text">
+                        <strong>Timeless</strong>
+                        <span>SG워너비</span>
+                    </div>
+                </li>
+                <li class="album-item" onclick="window.open('https://www.youtube.com/results?search_query=MCTheMax+어디에도')">
+                    <img src="https://image.bugsm.co.kr/album/images/500/20015/2001568.jpg" alt="어디에도 앨범 커버" class="album-cover">
+                    <div class="song-info-text">
+                        <strong>어디에도</strong>
+                        <span>M.C The Max</span>
+                    </div>
+                </li>
             </ul>
             <br>
             <a href="https://www.youtube.com/results?search_query=락발라드+명곡+모음" target="_blank" class="youtube-btn">
