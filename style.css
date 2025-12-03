@@ -6,12 +6,16 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* 부드러운 스크롤 */
 }
 
 body {
     font-family: 'Pretendard', sans-serif;
+<<<<<<< HEAD
     background-color: #121212;
+=======
+    background-color: #121212; /* 다크 모드 배경 */
+>>>>>>> 민영
     color: #ffffff;
     line-height: 1.6;
 }
@@ -71,6 +75,7 @@ body {
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 20px;
+<<<<<<< HEAD
     
     /* 1. 배경 설정 (필수) */
     background: linear-gradient(to right, #fff, #00f2ff);
@@ -84,6 +89,11 @@ body {
     -webkit-text-fill-color: transparent;
     
     display: inline-block; 
+=======
+    background: linear-gradient(to right, #fff, #00f2ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+>>>>>>> 민영
 }
 
 .btn-start {
@@ -102,7 +112,11 @@ body {
     transform: scale(1.05);
 }
 
+<<<<<<< HEAD
 /* 플로팅 뮤직 카드 */
+=======
+/* 플로팅 뮤직 카드 (이미지 대신 CSS 디자인) */
+>>>>>>> 민영
 .music-card-floating {
     position: absolute;
     right: 10%;
@@ -139,7 +153,11 @@ body {
     flex-direction: column;
 }
 
+<<<<<<< HEAD
 /* 장르 섹션 및 검색/무드 */
+=======
+/* 장르 섹션 */
+>>>>>>> 민영
 .genre-section {
     padding: 80px 5%;
     text-align: center;
@@ -152,6 +170,7 @@ body {
 
 .section-desc {
     color: #aaa;
+<<<<<<< HEAD
     margin-bottom: 30px;
 }
 
@@ -207,6 +226,9 @@ body {
     background: #00f2ff;
     color: #000;
     border-color: #00f2ff;
+=======
+    margin-bottom: 50px;
+>>>>>>> 민영
 }
 
 .grid-container {
@@ -215,7 +237,11 @@ body {
     gap: 30px;
 }
 
+<<<<<<< HEAD
 /* 카드 스타일 */
+=======
+/* 카드 공통 스타일 */
+>>>>>>> 민영
 .card {
     background: #1f1f1f;
     border-radius: 20px;
@@ -245,7 +271,11 @@ body {
     font-size: 5rem;
 }
 
+<<<<<<< HEAD
 /* 장르별 배경색 */
+=======
+/* 장르별 배경색 (절대 깨지지 않는 디자인) */
+>>>>>>> 민영
 .kpop .card-visual { background: linear-gradient(45deg, #FF61D2, #FE9090); }
 .rnb .card-visual { background: linear-gradient(45deg, #4facfe, #00f2fe); }
 .hiphop .card-visual { background: linear-gradient(45deg, #434343, #000000); }
@@ -325,6 +355,7 @@ body {
     color: #555;
     font-size: 0.8rem;
 }
+<<<<<<< HEAD
 
 /* --- 플로팅 플레이어 스타일 --- */
 .floating-player {
@@ -528,3 +559,331 @@ body {
     from { opacity: 0; transform: translateY(30px); } /* 아래에서 위로 */
     to { opacity: 1; transform: translateY(0); }
 }
+=======
+/* =========================
+   힙합 서브 장르 블로그 스타일
+   ========================= */
+
+.blog-layout {
+  max-width: 1100px;
+  margin: 90px auto 60px;
+  padding: 0 16px;
+  font-family: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #f5f5f5;
+}
+
+.blog-header {
+  margin-bottom: 32px;
+}
+
+.breadcrumb {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 12px;
+}
+
+.breadcrumb a {
+  color: #9ca3af;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.blog-title-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+}
+
+.blog-title-row h1 {
+  font-size: 30px;
+  margin: 10px 0 8px;
+}
+
+.blog-subtitle {
+  font-size: 15px;
+  color: #d1d5db;
+  margin-bottom: 8px;
+}
+
+.blog-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.blog-hero-emoji span {
+  display: inline-flex;
+  width: 80px;
+  height: 80px;
+  border-radius: 24px;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  background: linear-gradient(135deg, #f97316, #facc15);
+}
+
+/* 태그 스타일 */
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  margin-right: 6px;
+  margin-bottom: 4px;
+  background: rgba(148, 163, 184, 0.2);
+  color: #e5e7eb;
+}
+
+.tag-hiphop {
+  background: rgba(59, 130, 246, 0.2);
+  color: #bfdbfe;
+}
+
+.tag-oldschool {
+  background: rgba(251, 191, 36, 0.18);
+  color: #fee2b3;
+}
+
+/* 본문 + 사이드 레이아웃 */
+
+.blog-body {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(260px, 1fr);
+  gap: 28px;
+}
+
+.blog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.blog-block {
+  background: #111827;
+  border-radius: 18px;
+  padding: 20px 22px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(55, 65, 81, 0.9);
+}
+
+.blog-block h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.blog-block p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #e5e7eb;
+}
+
+/* 체크 리스트 */
+
+.check-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 14px;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 6px;
+}
+
+.check-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 12px;
+  color: #60a5fa;
+}
+
+/* 카드 그리드 */
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.info-card {
+  background: #020617;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid rgba(55, 65, 81, 0.8);
+}
+
+.info-card h3 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.info-card p {
+  font-size: 13px;
+  color: #cbd5f5;
+}
+
+/* 아티스트 리스트 */
+
+.artist-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 14px;
+}
+
+.artist-list li {
+  margin-bottom: 10px;
+}
+
+.artist-name {
+  display: block;
+  font-weight: 700;
+}
+
+.artist-desc {
+  font-size: 13px;
+  color: #d1d5db;
+}
+
+/* 추천 곡 테이블 */
+
+.song-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.song-table thead {
+  background: rgba(31, 41, 55, 0.9);
+}
+
+.song-table th,
+.song-table td {
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.song-table tbody tr:nth-child(even) {
+  background: rgba(17, 24, 39, 0.9);
+}
+
+.song-table tbody tr:nth-child(odd) {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.song-table th {
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+.song-table td {
+  color: #e5e7eb;
+}
+
+/* 요약 박스 */
+
+.blog-summary {
+  border-left: 3px solid #60a5fa;
+}
+
+/* 사이드바 */
+
+.blog-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.side-card {
+  background: #020617;
+  border-radius: 16px;
+  padding: 16px 18px;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.side-card h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.side-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 13px;
+}
+
+.side-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  color: #d1d5db;
+}
+
+.side-list span {
+  color: #9ca3af;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.link-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 13px;
+}
+
+.link-list a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.link-list a:hover {
+  text-decoration: underline;
+}
+
+/* 반응형 */
+
+@media (max-width: 900px) {
+  .blog-body {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .blog-hero-emoji span {
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
+  }
+}
+.song-cover {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+
+.song-table td:first-child {
+  width: 60px;
+}
+>>>>>>> 민영

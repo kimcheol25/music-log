@@ -67,7 +67,6 @@ function recommendMood(mood) {
    3. BGM 플레이어 기능 (BGM Player)
    ========================================= */
 let isPlaying = false;
-// Lofi Hip Hop 라디오 ID (원하는 유튜브 영상 ID로 교체 가능)
 const BGM_ID = "jfKfPfyJRdk"; 
 
 function toggleBGM() {
@@ -77,18 +76,16 @@ function toggleBGM() {
     const text = document.querySelector('.music-info-text');
 
     if (!isPlaying) {
-        // 재생 시작 (autoplay=1)
         frame.src = `https://www.youtube.com/embed/${BGM_ID}?autoplay=1&loop=1&playlist=${BGM_ID}`;
-        cd.style.animationPlayState = 'running'; // CD 회전 시작
-        btn.innerText = "⏸"; // 일시정지 아이콘
+        cd.style.animationPlayState = 'running';
+        btn.innerText = "⏸";
         text.innerText = "Now Playing";
         text.style.color = "#00f2ff";
         isPlaying = true;
     } else {
-        // 정지
         frame.src = "";
-        cd.style.animationPlayState = 'paused'; // CD 회전 멈춤
-        btn.innerText = "▶"; // 재생 아이콘
+        cd.style.animationPlayState = 'paused';
+        btn.innerText = "▶";
         text.innerText = "Music Off";
         text.style.color = "#fff";
         isPlaying = false;
@@ -96,25 +93,26 @@ function toggleBGM() {
 }
 
 /* =========================================
-   4. 기본 기능 (페이지 이동, 네비게이션, 알림)
+   4. 페이지 이동 기능
    ========================================= */
 function enterCategory(genre) {
+
     // 화면 페이드 아웃 효과
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease';
 
     setTimeout(() => {
-        // 각 장르 파일로 이동
         window.location.href = `${genre}.html`;
     }, 500);
 }
 
-// 투표 기능
+/* =========================================
+   5. 알림 기능
+   ========================================= */
 function voteMusic() {
     alert("소중한 한 표 감사합니다! 🗳️");
 }
 
-// 신청곡 기능
 function addRequest() {
     const song = prompt("신청하고 싶은 곡명과 가수를 입력해주세요:");
     if (song) {
@@ -122,12 +120,13 @@ function addRequest() {
     }
 }
 
-// 퀴즈 기능
 function startQuiz() {
     alert("음악 퀴즈가 준비 중입니다! 조금만 기다려주세요. 🧩");
 }
 
-// 스크롤 네비게이션 효과
+/* =========================================
+   6. 스크롤 네비게이션 효과
+   ========================================= */
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('.navbar');
     if(!nav) return;
