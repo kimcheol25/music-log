@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BALLAD | Music Lounge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Music Lounge</div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">홈</a></li>
+            <li><a href="index.html#genres">장르 탐험</a></li>
+            <li><a href="index.html#activity">커뮤니티</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>BALLAD WORLD</h1>
+            <p>감성, 멜로디, 이야기가 흐르는 발라드의 세계</p>
+        </div>
+    </header>
+
+    <section class="genre-section">
+        <h2 class="section-title">발라드 서브 장르</h2>
+        <p class="section-desc">당신의 감성을 자극할 스타일을 선택해 보세요.</p>
+
+        <div class="grid-container">
+            <div class="card ballad" onclick="location.href='ballad-traditional.html'">
+                <div class="card-visual">🎤</div>
+                <div class="card-content">
+                    <h3>정통 발라드</h3>
+                    <p>폭발적인 가창력과 호소력 짙은 목소리의 향연</p>
+                </div>
+            </div>
+
+            <div class="card ballad" onclick="location.href='ballad-rock.html'">
+                <div class="card-visual">🎸</div>
+                <div class="card-content">
+                    <h3>락 발라드 (Rock Ballad)</h3>
+                    <p>강렬한 사운드 속에 녹아든 애절한 감성</p>
+                </div>
+            </div>
+
+            <div class="card ballad" onclick="location.href='ballad-rnb.html'">
+                <div class="card-visual">🌃</div>
+                <div class="card-content">
+                    <h3>R&B 발라드</h3>
+                    <p>그루브한 리듬과 소울풀한 보컬의 조화</p>
+                </div>
+            </div>
+
+            <div class="card ballad" onclick="location.href='ballad-indie.html'">
+                <div class="card-visual">🍂</div>
+                <div class="card-content">
+                    <h3>인디/포크 발라드</h3>
+                    <p>통기타 선율과 담백한 가사로 전하는 위로</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Music Lounge Project. All rights reserved.</p>
+    </footer>
+</body>
+</html>
