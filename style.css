@@ -847,3 +847,24 @@ body {
     font-size: 32px;
   }
 }
+/* 곡명 + 커버 같이 있는 링크 */
+.song-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;              /* 사진과 제목 사이 간격 */
+  text-decoration: none;  /* 밑줄 제거 */
+  color: inherit;         /* 기존 글자색 그대로 */
+}
+
+/* 테이블 안에서 쓰는 커버 이미지 사이즈 */
+.song-cover {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* 마우스 올렸을 때 살짝 강조 (선택사항) */
+.song-link:hover span {
+  text-decoration: underline;
+}
