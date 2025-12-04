@@ -844,3 +844,7 @@ body {
 .song-link:hover span {
   text-decoration: underline;
 }
+body {
+  background-color: #121212;
+  color: #ffffff;
+}
