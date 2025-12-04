@@ -1,41 +1,52 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>트로트 플레이리스트</title>
+<meta charset="UTF-8">
+<title>Trot Playlist</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Dokdo&display=swap" rel="stylesheet">
+
 <style>
- body{margin:0;padding:32px;font-family:'Pretendard';background:#0d0d0e;color:white;}
- h1{text-align:center;font-size:2.4rem;margin-bottom:28px;color:#ff9fb3;}
- .list-section{margin-bottom:40px;}
- h2{color:#ffdce2;margin-bottom:12px;}
- ul{list-style:none;padding:0;}
- li{background:#1c1b1c;margin-bottom:10px;padding:14px;border-radius:10px;}
- img{width:50px;height:50px;border-radius:8px;margin-right:10px;vertical-align:middle;}
- .song{display:flex;align-items:center;}
+  body {
+    margin: 0;
+    background: url('background.jpg') no-repeat center/cover;
+    padding: 40px;
+    color: white;
+    font-family: 'Jua';
+  }
+  .playlist {
+    background: rgba(0,0,0,0.65);
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0 0 20px gold;
+  }
+  h1 {
+    font-family: 'Dokdo';
+    font-size: 55px;
+    color: gold;
+    text-align: center;
+  }
+  .song {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
 </style>
 </head>
 <body>
-<h1>트로트 플레이리스트</h1>
-<div class="list-section">
-<h2>🌿 힐링 트로트</h2>
-<ul>
-<li><div class="song"><img src="https://i.imgur.com/Wyb2fPp.jpeg">임영웅 – 아버지</div></li>
-<li><div class="song"><img src="https://i.imgur.com/T8Diy13.jpeg">정동원 – 효도합시다</div></li>
-</ul>
+
+<div class="playlist">
+  <h1>Trot Playlist</h1>
+
+  <div class="song">Lim Young-woong – Trust in Me</div>
+  <div class="song">Youngtak – Why Are You Coming Out From There</div>
+  <div class="song">Hong Jin-young – Love Battery</div>
+  <div class="song">Na Hoon-a – Tess Hyung!</div>
 </div>
-<div class="list-section">
-<h2>🔥 신나는 흥 트로트</h2>
-<ul>
-<li><div class="song"><img src="https://i.imgur.com/4EU8mV4.jpeg">영탁 – 니가 왜 거기서 나와</div></li>
-<li><div class="song"><img src="https://i.imgur.com/TWx9qw5.jpeg">홍진영 – 사랑의 배터리</div></li>
-</ul>
-</div>
-<div class="list-section">
-<h2>💔 감성 뽕 발라드</h2>
-<ul>
-<li><div class="song"><img src="https://i.imgur.com/ftdtaQb.jpeg">나훈아 – 사내</div></li>
-<li><div class="song"><img src="https://i.imgur.com/FWCpFLH.jpeg">조항조 – 남자라는 이유로</div></li>
-</ul>
-</div>
+
 </body>
 </html>
