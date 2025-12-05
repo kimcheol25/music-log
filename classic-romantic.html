@@ -3,11 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="현대 클래식 음악 소개, 작곡가, 추천 작품, 분위기 및 감상 팁을 한눈에 정리한 블로그.">
   <title>현대 클래식 | Music Lounge</title>
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- AOS 스크롤 애니메이션 -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    /* 기본 리셋 */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Pretendard', sans-serif; line-height:1.6; background:#f5f5f5; color:#333; }
+    a { text-decoration:none; color:inherit; }
+
+    /* 네비게이션 */
+    .navbar { display:flex; justify-content:space-between; align-items:center; padding:20px 40px; background:#111; color:white; position:sticky; top:0; z-index:100; }
+    .navbar .nav-links li { display:inline-block; margin-left:20px; }
+    .navbar a { transition:0.3s; }
+    .navbar a:hover { color:#ffcc00; }
+
+    /* 블로그 레이아웃 */
+    .blog-layout { display:flex; flex-wrap:wrap; max-width:1200px; margin:40px auto; gap:40px; padding:0 20px; }
+    .blog-body { flex:3; }
+    .blog-sidebar { flex:1; display:flex; flex-direction:column; gap:20px; position:sticky; top:100px; }
+
+    /* 블로그 헤더 */
+    .blog-header { margin-bottom:30px; }
+    .breadcrumb a { color:#555; margin-right:5px; }
+    .breadcrumb span { color:#999; }
+    .blog-title-row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+    .blog-title-row h1 { font-size:2.4rem; color:#222; margin-top:10px; }
+    .blog-subtitle { font-size:1.1rem; color:#666; margin:10px 0; }
+    .blog-meta span { display:inline-block; margin-right:10px; font-size:0.9rem; color:#999; }
+
+    /* 블로그 블록 */
+    .blog-block { background:white; padding:30px; margin-bottom:30px; border-radius:12px; box-shadow:0 6px 15px rgba(0,0,0,0.05); transition:0.3s; }
+    .blog-block:hover { transform:translateY(-3px); box-shadow:0 10px 20px rgba(0,0,0,0.1); }
+    .blog-block h2 { font-size:1.6rem; margin-bottom:15px; color:#222; }
+    .check-list li { margin-bottom:12px; padding-left:20px; position:relative; }
+    .check-list li::before { content:"✔"; position:absolute; left:0; color:#ffcc00; }
+
+    /* 카드형 정보 */
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:20px; }
+    .info-card { background:#fafafa; padding:20px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.05); transition:0.3s; }
+    .info-card:hover { transform:translateY(-5px); box-shadow:0 6px 12px rgba(0,0,0,0.1); }
+
+    /* 아티스트 리스트 */
+    .artist-list li { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #eee; }
+    .artist-name { font-weight:600; }
+    .artist-desc { color:#666; font-size:0.9rem; }
+
+    /* 테이블 */
+    .song-table { width:100%; border-collapse:collapse; margin-top:10px; }
+    .song-table th, .song-table td { border:1px solid #ddd; padding:12px; text-align:left; }
+    .song-table th { background:#ffcc00; color:#222; }
+
+    /* 이미지 */
+    .artist-img { width:100%; border-radius:12px; margin-top:15px; }
+
+    /* 유튜브 영상 */
+    .video-embed { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; margin-top:20px; }
+    .video-embed iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; border-radius:12px; }
+
+    /* 사이드바 카드 */
+    .side-card { background:white; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.05); }
+    .chip-row { display:flex; flex-wrap:wrap; gap:10px; }
+    .tag-chip { background:#eee; padding:5px 12px; border-radius:20px; font-size:0.85rem; cursor:pointer; transition:0.3s; }
+    .tag-chip:hover { background:#ffcc00; color:white; }
+
+    /* 한 줄 요약 */
+    .blog-summary p { font-size:1.1rem; color:#444; margin-top:10px; }
+
+    /* 반응형 */
+    @media(max-width:900px){ .blog-layout{ flex-direction:column; } .blog-sidebar{ position:relative; top:auto; } }
+    @media(max-width:500px){ .blog-title-row h1{ font-size:2rem; } }
+  </style>
 </head>
 <body>
+
   <nav class="navbar">
     <div class="logo">Music Lounge</div>
     <ul class="nav-links">
@@ -18,39 +91,42 @@
   </nav>
 
   <main class="blog-layout">
-    <section class="blog-header">
-      <div class="breadcrumb">
-        <a href="index.html#genres">장르별 음악 여행</a> ·
-        <a href="classic.html">클래식</a> ·
-        <span>현대</span>
-      </div>
-      <div class="blog-title-row">
-        <div>
-          <span class="tag-chip tag-classic">CLASSICAL</span>
-          <span class="tag-chip">현대</span>
-          <h1>현대 클래식, 실험과 창조의 시대</h1>
-          <p class="blog-subtitle">
-            전통 형식 탈피, 음향과 구조의 혁신
-          </p>
-          <div class="blog-meta">
-            <span>분위기 · 실험적 · 다채 · 혁신</span>
-            <span>전성기 · 1900년대 이후</span>
-          </div>
-        </div>
-        <div class="blog-hero-emoji">
-          <span>🎶</span>
-        </div>
-      </div>
-    </section>
-
     <section class="blog-body">
+
       <article class="blog-content">
-        <section class="blog-block">
+
+        <!-- 블로그 헤더 -->
+        <section class="blog-header" data-aos="fade-up">
+          <div class="breadcrumb">
+            <a href="index.html#genres">장르별 음악 여행</a> ·
+            <a href="classic.html">클래식</a> ·
+            <span>현대</span>
+          </div>
+          <div class="blog-title-row">
+            <div>
+              <span class="tag-chip tag-classic">CLASSICAL</span>
+              <span class="tag-chip">현대</span>
+              <h1>현대 클래식, 실험과 창조의 시대</h1>
+              <p class="blog-subtitle">
+                전통 형식 탈피, 음향과 구조의 혁신
+              </p>
+              <div class="blog-meta">
+                <span>분위기 · 실험적 · 다채 · 혁신</span>
+                <span>전성기 · 1900년대 이후</span>
+              </div>
+            </div>
+            <div class="blog-hero-emoji"><span>🎶</span></div>
+          </div>
+        </section>
+
+        <!-- 1. 현대 클래식 정의 -->
+        <section class="blog-block" data-aos="fade-up">
           <h2>1. 현대 클래식이란?</h2>
           <p>20세기 이후 클래식 음악은 전통적인 조화와 규칙에서 벗어나 음향 실험, 새로운 화성, 비전통적 구조를 탐구했습니다. 현대 음악, 미니멀리즘, 전자음악 등이 포함됩니다.</p>
         </section>
 
-        <section class="blog-block">
+        <!-- 2. 사운드와 특징 -->
+        <section class="blog-block" data-aos="fade-up">
           <h2>2. 사운드와 특징</h2>
           <ul class="check-list">
             <li>전통적 화성보다는 음색과 리듬 실험</li>
@@ -60,7 +136,8 @@
           </ul>
         </section>
 
-        <section class="blog-block">
+        <!-- 3. 추천 감상 상황 -->
+        <section class="blog-block" data-aos="fade-up">
           <h2>3. 언제 들으면 좋은지</h2>
           <div class="info-grid">
             <div class="info-card">
@@ -78,17 +155,35 @@
           </div>
         </section>
 
-        <section class="blog-block">
+        <!-- 4. 대표 작곡가 -->
+        <section class="blog-block" data-aos="fade-up">
           <h2>4. 대표 작곡가</h2>
           <ul class="artist-list">
-            <li><span class="artist-name">드뷔시 (Debussy)</span><span class="artist-desc">인상주의적 색채와 화성</span></li>
-            <li><span class="artist-name">스트라빈스키 (Stravinsky)</span><span class="artist-desc">리듬과 화성의 혁신</span></li>
-            <li><span class="artist-name">쇼스타코비치 (Shostakovich)</span><span class="artist-desc">극적 긴장과 사회적 메시지</span></li>
-            <li><span class="artist-name">필립 글래스 (Philip Glass)</span><span class="artist-desc">미니멀리즘의 선구자</span></li>
+            <li>
+              <span class="artist-name">드뷔시 (Debussy)</span>
+              <span class="artist-desc">인상주의적 색채와 화성</span>
+            </li>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Debussy_1908.jpg" alt="드뷔시 초상" class="artist-img">
+            <li>
+              <span class="artist-name">스트라빈스키 (Stravinsky)</span>
+              <span class="artist-desc">리듬과 화성의 혁신</span>
+            </li>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Stravinsky1934.jpg" alt="스트라빈스키 초상" class="artist-img">
+            <li>
+              <span class="artist-name">쇼스타코비치 (Shostakovich)</span>
+              <span class="artist-desc">극적 긴장과 사회적 메시지</span>
+            </li>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Shostakovich_1971.jpg" alt="쇼스타코비치 초상" class="artist-img">
+            <li>
+              <span class="artist-name">필립 글래스 (Philip Glass)</span>
+              <span class="artist-desc">미니멀리즘의 선구자</span>
+            </li>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Philip_Glass_2006.jpg" alt="필립 글래스 초상" class="artist-img">
           </ul>
         </section>
 
-        <section class="blog-block">
+        <!-- 5. 추천 작품 -->
+        <section class="blog-block" data-aos="fade-up">
           <h2>5. 추천 작품</h2>
           <table class="song-table">
             <thead>
@@ -121,57 +216,73 @@
               </tr>
             </tbody>
           </table>
+
+          <!-- 유튜브 영상 예시 -->
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/vvYrD4Kjhhw" title="Debussy - Clair de Lune" allowfullscreen></iframe>
+          </div>
         </section>
 
-        <section class="blog-block blog-summary">
+        <!-- 6. 한 줄 요약 -->
+        <section class="blog-block blog-summary" data-aos="fade-up">
           <h2>한 줄 요약</h2>
           <p>💬 <strong>현대 클래식</strong>은 전통을 뛰어넘어 실험적이고 다채로운 화성과 구조를 탐구하는 시대입니다.</p>
         </section>
+
       </article>
 
-      <aside class="blog-sidebar">
-        <div class="side-card">
-          <h3>현대 클래식 한눈에 보기</h3>
-          <ul class="side-list">
-            <li><span>주요 시기</span><strong>1900년대~현재</strong></li>
-            <li><span>분위기</span><strong>실험적 · 혁신적 · 다채</strong></li>
-            <li><span>대표 악기</span><strong>피아노, 오케스트라, 전자악기</strong></li>
-            <li><span>대표 장르</span><strong>현대 음악, 미니멀리즘, 전자음악</strong></li>
-          </ul>
-        </div>
-
-        <div class="side-card">
-          <h3>키워드</h3>
-          <div class="chip-row">
-            <span class="tag-chip">음향 실험</span>
-            <span class="tag-chip">비전통 구조</span>
-            <span class="tag-chip">미니멀리즘</span>
-          </div>
-        </div>
-
-        <div class="side-card">
-          <h3>추천 활동</h3>
-          <ul class="link-list">
-            <li>예술적 연구</li>
-            <li>작곡 및 연주 학습</li>
-            <li>창의적 영감</li>
-          </ul>
-        </div>
-
-        <div class="side-card">
-          <h3>다음에 볼 장르</h3>
-          <ul class="link-list">
-            <li><a href="classic-baroque.html">바로크 →</a></li>
-            <li><a href="classic-classical.html">고전 →</a></li>
-            <li><a href="classic-romantic.html">로맨틱 →</a></li>
-          </ul>
-        </div>
-      </aside>
     </section>
+
+    <!-- 사이드바 -->
+    <aside class="blog-sidebar" data-aos="fade-left">
+      <div class="side-card">
+        <h3>현대 클래식 한눈에 보기</h3>
+        <ul class="side-list">
+          <li><span>주요 시기</span><strong>1900년대~현재</strong></li>
+          <li><span>분위기</span><strong>실험적 · 혁신적 · 다채</strong></li>
+          <li><span>대표 악기</span><strong>피아노, 오케스트라, 전자악기</strong></li>
+          <li><span>대표 장르</span><strong>현대 음악, 미니멀리즘, 전자음악</strong></li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h3>키워드</h3>
+        <div class="chip-row">
+          <span class="tag-chip">음향 실험</span>
+          <span class="tag-chip">비전통 구조</span>
+          <span class="tag-chip">미니멀리즘</span>
+          <span class="tag-chip">전자음악</span>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h3>추천 활동</h3>
+        <ul class="link-list">
+          <li>예술적 연구</li>
+          <li>작곡 및 연주 학습</li>
+          <li>창의적 영감</li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h3>다음에 볼 장르</h3>
+        <ul class="link-list">
+          <li><a href="classic-baroque.html">바로크 →</a></li>
+          <li><a href="classic-classical.html">고전 →</a></li>
+          <li><a href="classic-romantic.html">로맨틱 →</a></li>
+        </ul>
+      </div>
+    </aside>
   </main>
 
-  <footer class="footer">
-    <p>&copy; 2025 Music Lounge Project. All rights reserved.</p>
+  <footer class="footer" style="text-align:center; padding:20px; color:#666; font-size:0.9rem;">
+    &copy; 2025 Music Lounge Project. All rights reserved.
   </footer>
+
+  <!-- AOS 스크립트 -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration:1000, once:true });
+  </script>
 </body>
 </html>
