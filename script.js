@@ -1,170 +1,94 @@
-/* =========================================
-   1. 기본 기능 (시계, 테마, 무드)
-   ========================================= */
 function updateClock() {
     const clockElement = document.getElementById('digitalClock');
     if (clockElement) {
         const now = new Date();
-        clockElement.innerText = now.toLocaleTimeString();
+        clockElement.innerText = now.toLocaleTimeString('ko-KR', { hour12: false });
     }
 }
 setInterval(updateClock, 1000);
-updateClock();
 
-function toggleTheme() {
-    const body = document.body;
-    const btn = document.getElementById('themeToggle');
-    body.classList.toggle('light-mode');
-    
-    if (btn) {
-        btn.innerText = body.classList.contains('light-mode') ? '🌙' : '☀️';
+function scrollToPlayer() {
+    const player = document.getElementById('spotifyPlayer');
+    if (player) {
+        player.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        player.style.border = "2px solid #1ED760";
+        setTimeout(() => { player.style.border = "1px solid #333"; }, 1500);
     }
 }
 
-/* =========================================
-   2. [NEW] 플로팅 배경 변경 로직
-   ========================================= */
-// 테마 목록 정의
-const themes = [
-    { name: 'default', icon: '🎨', label: '기본 (Dark)' },
-    { name: 'city', icon: '🌃', label: '도시 (City)' },
-    { name: 'nature', icon: '🏞️', label: '자연 (Nature)' },
-    { name: 'sf', icon: '🚀', label: 'SF (Space)' },
-    { name: 'fantasy', icon: '🏰', label: '판타지 (Fantasy)' }
-];
-
-let currentThemeIndex = 0;
-
-function rotateTheme() {
-    // 다음 인덱스로 이동 (끝이면 0으로 돌아감)
-    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-    const nextTheme = themes[currentThemeIndex];
-    
-    // 배경 변경 함수 호출
-    changeMood(nextTheme.name);
-    
-    // 버튼 UI 업데이트
-    document.getElementById('themeIcon').innerText = nextTheme.icon;
-    document.querySelector('.theme-label').innerText = nextTheme.label;
-}
-
-function changeMood(mood) {
-    const body = document.body;
-    // 기존 무드 클래스 모두 제거
-    body.classList.remove('mood-city', 'mood-nature', 'mood-sf', 'mood-fantasy');
-    
-    // 기본(default)이 아닐 경우 새로운 무드 클래스 추가
-    if (mood !== 'default') {
-        body.classList.add(`mood-${mood}`);
+function renderCalendar() {
+    const grid = document.getElementById('calendarGrid');
+    if (!grid) return;
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+    const today = now.getDate();
+    document.getElementById('calMonth').innerText = (currentMonth + 1) + "월";
+    document.getElementById('calYear').innerText = currentYear;
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const lastDate = new Date(currentYear, currentMonth + 1, 0).getDate();
+    let html = "";
+    const days = ['일', '월', '화', '수', '목', '금', '토'];
+    days.forEach(day => html += `<div style="color:#888; font-size:0.7rem;">${day}</div>`);
+    for (let i = 0; i < firstDay; i++) html += `<div></div>`;
+    for (let i = 1; i <= lastDate; i++) {
+        if (i === today) html += `<div style="background:#1ED760; color:black; border-radius:50%; font-weight:bold; padding:5px;">${i}</div>`;
+        else html += `<div style="padding:5px; color:#ccc;">${i}</div>`;
     }
-}
-
-/* =========================================
-   3. 검색 및 기분별 장르 추천 (필터링)
-   ========================================= */
-function filterGenres() {
-    const input = document.getElementById('searchInput');
-    if (!input) return;
-    
-    const filter = input.value.toUpperCase(); 
-    const cards = document.querySelectorAll('.card');
-
-    cards.forEach(card => {
-        const title = card.querySelector('h3');
-        if (title) {
-            const textValue = title.textContent || title.innerText;
-            card.style.display = textValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
-        }
-    });
+    grid.innerHTML = html;
 }
 
 function filterByMood(selectedMood) {
-    const cards = document.querySelectorAll('.card');
-    
+    const cards = document.querySelectorAll('.d-card');
     cards.forEach(card => {
-        const cardMoods = card.getAttribute('data-mood');
-        
-        if (selectedMood === 'all') {
-            card.style.display = "";
-            card.style.opacity = "1";
-        } else if (cardMoods && cardMoods.includes(selectedMood)) {
-            card.style.display = "";
-            card.style.opacity = "1";
-            card.style.transform = "scale(1.05)";
-            setTimeout(() => card.style.transform = "", 300);
+        const moods = card.getAttribute('data-mood');
+        if (selectedMood === 'all' || (moods && moods.includes(selectedMood))) {
+            card.style.display = 'flex';
         } else {
-            card.style.display = "none";
+            card.style.display = 'none';
         }
     });
 }
 
-function enterCategory(genre) {
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        window.location.href = `${genre.toLowerCase()}.html`;
-    }, 500);
-}
-
-/* =========================================
-   4. 게시판 (LocalStorage)
-   ========================================= */
 function loadPosts() {
     const boardList = document.getElementById('boardList');
-    if (!boardList) return; 
-
-    const posts = JSON.parse(localStorage.getItem('musicBoardPosts')) || [];
-    boardList.innerHTML = ""; 
-    posts.forEach(post => displayPost(post.name, post.msg, post.date));
-}
-
-function displayPost(name, msg, date) {
-    const boardList = document.getElementById('boardList');
     if (!boardList) return;
-
-    const li = document.createElement('li');
-    li.innerHTML = `
-        <div>
-            <span class="writer">${name}</span>
-            <span class="message">${msg}</span>
-        </div>
-        <span class="date">${date}</span>
-    `;
-    boardList.prepend(li);
+    const posts = JSON.parse(localStorage.getItem('musicBoardPosts')) || [];
+    boardList.innerHTML = "";
+    posts.forEach(p => {
+        const li = document.createElement('li');
+        li.style.padding = "5px 0";
+        li.innerHTML = `<span style="color:#1ED760; font-weight:bold;">${p.name}</span> <span style="margin-left:10px;">${p.msg}</span>`;
+        boardList.prepend(li);
+    });
 }
 
 function addPost() {
-    const nameInput = document.getElementById('boardName');
-    const msgInput = document.getElementById('boardMsg');
-
-    if (!nameInput || !msgInput) return;
-    
-    if (nameInput.value === "" || msgInput.value === "") {
-        alert("이름과 내용을 모두 입력해주세요!");
-        return;
-    }
-
-    const now = new Date();
-    const dateStr = `${now.getMonth()+1}/${now.getDate()} ${now.getHours()}:${now.getMinutes()}`;
-    
-    const newPost = { name: nameInput.value, msg: msgInput.value, date: dateStr };
-    
+    const name = document.getElementById('boardName').value;
+    const msg = document.getElementById('boardMsg').value;
+    if(!name || !msg) return alert("입력해주세요");
     const posts = JSON.parse(localStorage.getItem('musicBoardPosts')) || [];
-    posts.push(newPost);
+    posts.push({ name, msg });
     localStorage.setItem('musicBoardPosts', JSON.stringify(posts));
-
-    displayPost(newPost.name, newPost.msg, newPost.date);
-    msgInput.value = "";
+    document.getElementById('boardMsg').value = "";
+    loadPosts();
 }
 
-function clearPosts() {
-    if(confirm("게시글을 모두 삭제할까요?")) {
-        localStorage.removeItem('musicBoardPosts');
-        loadPosts();
-    }
+function recommendMusic() {
+    const input = document.getElementById('moodInput').value;
+    const resultBox = document.getElementById('recommendResult');
+    if (!input) { alert("기분을 입력해주세요!"); return; }
+    let song = "아이유 - 밤편지"; 
+    if (input.includes("우울")) song = "박효신 - 야생화";
+    else if (input.includes("신나")) song = "NewJeans - Hype Boy";
+    else if (input.includes("파티")) song = "싸이 - 챔피언";
+    else if (input.includes("차분")) song = "조성진 - 달빛";
+    const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(song)}`;
+    resultBox.innerHTML = `<div onclick="window.open('${url}','_blank')" style="cursor:pointer; width:100%;">추천곡: <u>${song}</u> (클릭)</div>`;
 }
 
-// 페이지 로드 시 실행
 window.onload = function() {
     updateClock();
+    renderCalendar();
     loadPosts();
 };
