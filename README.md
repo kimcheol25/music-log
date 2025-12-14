@@ -8,3 +8,6 @@
 
 <img src="images/KakaoTalk_20251201_100329983.jpg" alt="첫 번째 첨부 파일" width="400">
 <img src="images/KakaoTalk_20251201_100330261.jpg" alt="두 번째 첨부 파일" width="400">
+가장 처음 회의할때 구성하기로 결정한 메인 페이지와 세부 페이지 모양입니다.
+
+홈페이지 변화 과정
